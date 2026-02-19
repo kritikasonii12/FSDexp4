@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family:Arial;text-align:center;margin-top:80px">
+
+<h2>Seat Booking</h2>
+
+<input id="user" placeholder="Name">
+<input id="seat" placeholder="Seat">
+<button onclick="book()">Book</button>
+
+<pre id="out"></pre>
+
+<script>
+let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+
+function book(){
+    const user=user.value;
+    const seat=seat.value;
+
+    bookings.push({user,seat});
+    localStorage.setItem("bookings",JSON.stringify(bookings));
+
+    out.innerText = "Seat booked for "+user+" seat "+seat;
+}
+</script>
+
+<br><a href="index.html">Back</a>
+
+</body>
+</html>

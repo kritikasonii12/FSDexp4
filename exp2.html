@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Experiment 4.2</title>
+</head>
+<body style="font-family:Arial;text-align:center;margin-top:80px">
+
+<h2>Cards Manager</h2>
+
+<input id="suit" placeholder="Suit">
+<input id="value" placeholder="Value">
+<button onclick="addCard()">Add Card</button>
+
+<pre id="res"></pre>
+
+<script>
+let cards = JSON.parse(localStorage.getItem("cards")) || [];
+
+function show(){
+    document.getElementById("res").innerText =
+        JSON.stringify(cards, null, 2);
+}
+
+function addCard(){
+    const suit = document.getElementById("suit").value;
+    const value = document.getElementById("value").value;
+
+    cards.push({id:Date.now(), suit, value});
+    localStorage.setItem("cards", JSON.stringify(cards));
+    show();
+}
+
+show();
+</script>
+
+<br><a href="index.html">Back</a>
+</body>
+</html>
